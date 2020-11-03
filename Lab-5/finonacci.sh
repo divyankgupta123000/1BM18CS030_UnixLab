@@ -1,15 +1,31 @@
-echo "Enter n: -"
+printf "Enter a positive n value: -"
 read n
 a=0
 b=1
-c=1
-printf "Fibonacci numbers till $n are: -"
+sum=1
+count=3
+
+if [ $n -lt 1 ]
+then
+    printf "Invalid Input\n"
+elif [ $n -eq 1 ]
+then
+    printf "First Fibonacci number is: -\n"
+    printf "$a"
+elif [ $n -eq 2 ]
+then
+    printf "First $n Fibonacci numbers are: -\n"
+    printf "$a $b"
+else
+printf "First $n Fibonacci numbers are: -\n"
 printf "$a $b "
-while [ $c -lt $n ]
+while [ $count -le $n ]
 do
-   printf "$c "
+   printf "$sum "
    a=$b
-   b=$c
-   c=`expr $a + $b`
+   b=$sum
+   sum=`echo $a + $b|bc`
+   count=`echo $count + 1|bc`
 done
-printf "$n\n"
+fi
+printf "\n"
